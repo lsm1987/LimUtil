@@ -18,4 +18,15 @@ public class XmlUtilTest
         Assert.NotNull(info);
         Assert.AreEqual(100, info.IntVal);
 	}
+
+    [Test]
+    public void LoadXmlFromStringTest()
+    {
+        string xmlString = @"<root>
+    <intVal>100</intVal>
+</root>";
+        XmlTestInfo info = XmlUtil.LoadXmlFromString<XmlTestInfo>(xmlString);
+        Assert.NotNull(info);
+        Assert.AreEqual(100, info.IntVal);
+    }
 }

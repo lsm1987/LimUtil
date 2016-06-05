@@ -24,5 +24,18 @@ namespace Lim.Xml
                 return serializer.Deserialize(s) as T;
             }
         }
+
+        /// <summary>
+        /// XML 문자열로부터 클래스 인스턴스를 생성한다.
+        /// </summary>
+        public static T LoadXmlFromString<T>(string xmlString)
+            where T : class
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            using (var reader = new StringReader(xmlString))
+            {
+                return serializer.Deserialize(reader) as T;
+            }
+        }
     }
 }
