@@ -59,10 +59,14 @@ namespace Lim.Xml
             settings.OmitXmlDeclaration = true;
             settings.Indent = true;
 
+            return SaveXmlToString(obj, settings, GetEmptyNamespaces());
+        }
+
+        public static XmlSerializerNamespaces GetEmptyNamespaces()
+        {
             XmlSerializerNamespaces namespaces = new XmlSerializerNamespaces();
             namespaces.Add("", "");
-
-            return SaveXmlToString(obj, settings, namespaces);
+            return namespaces;
         }
     }
 }
