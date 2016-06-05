@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml;
 using System.Xml.Schema;
@@ -8,9 +7,9 @@ using System.Xml.Serialization;
 namespace Lim.Xml
 {
     /// <summary>
-    /// 직렬화시 텍스트 한줄이 되는 HashSet
+    /// 텍스트 한줄을 파싱하는 HashSet
     /// </summary>
-    public class OneLineHashSet<T>
+    public class LineParseHashSet<T>
         : HashSet<T>, IXmlSerializable
     {
         #region IXmlSerializable Members

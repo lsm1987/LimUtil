@@ -3,7 +3,7 @@ using NUnit.Framework;
 using System.Xml;
 using System.Xml.Serialization;
 
-public class OneLineHashSetTest
+public class LineParseHashSetTest
 {
     [XmlRoot("root")]
     public class ItemInfo
@@ -14,11 +14,11 @@ public class OneLineHashSetTest
         }
 
         [XmlElement("items")]
-        public OneLineHashSet<int> Items { get; set; }
+        public LineParseHashSet<int> Items { get; set; }
         [XmlElement("itemIds")]
-        public OneLineHashSet<ItemId> ItemIds { get; set; }
+        public LineParseHashSet<ItemId> ItemIds { get; set; }
         [XmlElement("itemTypes")]
-        public OneLineHashSet<ItemType> ItemTypes { get; set; }
+        public LineParseHashSet<ItemType> ItemTypes { get; set; }
     }
 
     [Test]
@@ -42,16 +42,16 @@ public class OneLineHashSetTest
     {
         ItemInfo info = new ItemInfo();
 
-        info.Items = new OneLineHashSet<int>();
+        info.Items = new LineParseHashSet<int>();
         info.Items.Add(10);
         info.Items.Add(20);
         info.Items.Add(30);
 
-        info.ItemIds = new OneLineHashSet<ItemId>();
+        info.ItemIds = new LineParseHashSet<ItemId>();
         info.ItemIds.Add(new ItemId(1000));
         info.ItemIds.Add(new ItemId(2000));
 
-        info.ItemTypes = new OneLineHashSet<ItemInfo.ItemType>();
+        info.ItemTypes = new LineParseHashSet<ItemInfo.ItemType>();
         info.ItemTypes.Add(ItemInfo.ItemType.Equip);
         info.ItemTypes.Add(ItemInfo.ItemType.Consume);
 
