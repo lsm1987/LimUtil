@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -24,7 +25,7 @@ namespace Lim.Xml
             string[] splittedValues = valuesString.Split(',');
             foreach (string value in splittedValues)
             {
-                Add((T)Convert.ChangeType(value, typeof(T)));
+                Add((T)TypeDescriptor.GetConverter(typeof(T)).ConvertFromString(value));
             }
         }
 
