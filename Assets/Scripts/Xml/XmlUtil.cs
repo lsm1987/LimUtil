@@ -52,5 +52,17 @@ namespace Lim.Xml
                 return stringWriter.ToString();
             }
         }
+
+        public static string SaveXmlToString<T>(T obj)
+        {
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.OmitXmlDeclaration = true;
+            settings.Indent = true;
+
+            XmlSerializerNamespaces namespaces = new XmlSerializerNamespaces();
+            namespaces.Add("", "");
+
+            return SaveXmlToString(obj, settings, namespaces);
+        }
     }
 }

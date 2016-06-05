@@ -24,7 +24,7 @@ public class XmlUtilTest
     public void LoadXmlFromStringTest()
     {
         string xmlString = @"<root>
-    <intVal>100</intVal>
+  <intVal>100</intVal>
 </root>";
         XmlTestInfo info = XmlUtil.LoadXmlFromString<XmlTestInfo>(xmlString);
         Assert.NotNull(info);
@@ -41,14 +41,7 @@ public class XmlUtilTest
   <intVal>100</intVal>
 </root>";
 
-        XmlWriterSettings settings = new XmlWriterSettings();
-        settings.OmitXmlDeclaration = true;
-        settings.Indent = true;
-
-        XmlSerializerNamespaces namespaces = new XmlSerializerNamespaces();
-        namespaces.Add("", "");
-
-        string xmlString = XmlUtil.SaveXmlToString(info, settings, namespaces);
+        string xmlString = XmlUtil.SaveXmlToString(info);
         Assert.AreEqual(expectedXmlString, xmlString);
     }
 }
