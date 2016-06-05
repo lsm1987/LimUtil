@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 /// <summary>
 /// 아이템 식별자
 /// </summary>
-public struct ItemId : IComparable<ItemId>, IEquatable<ItemId>
+public struct ItemId : IComparable<ItemId>, IEquatable<ItemId>, IXmlSerializable
 {
-    private readonly uint value;
+    private uint value;
 
     public static readonly ItemId InvalidId = new ItemId();
 
@@ -68,5 +71,20 @@ public struct ItemId : IComparable<ItemId>, IEquatable<ItemId>
         {
             return 0;
         }
+    }
+
+    public XmlSchema GetSchema()
+    {
+        return (null);
+    }
+
+    public void ReadXml(XmlReader reader)
+    {
+        value = Convert.ToUInt32(reader.ReadString());
+    }
+
+    public void WriteXml(XmlWriter writer)
+    {
+        writer.WriteString(value.ToString());
     }
 }
