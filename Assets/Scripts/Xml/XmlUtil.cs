@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Xml;
 using System.Xml.Serialization;
 using UnityEngine;
 
@@ -35,6 +36,20 @@ namespace Lim.Xml
             using (var reader = new StringReader(xmlString))
             {
                 return serializer.Deserialize(reader) as T;
+            }
+        }
+
+        /// <summary>
+        /// 인스턴스를 XML 문자열로 변경한다.
+        /// </summary>
+        public static string SaveXmlToString<T>(T obj, XmlWriterSettings settings, XmlSerializerNamespaces namespaces)
+        {
+            using (var stringWriter = new StringWriter())
+            using (var writer = XmlWriter.Create(stringWriter, settings))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(T));
+                serializer.Serialize(writer, obj, namespaces);
+                return stringWriter.ToString();
             }
         }
     }
